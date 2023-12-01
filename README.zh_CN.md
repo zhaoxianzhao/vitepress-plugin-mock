@@ -1,3 +1,9 @@
+# forked from vbenjs/vite-plugin-mock [github](https://github.com/vbenjs/vite-plugin-mock)
+
+::: tip
+vitepress 内使用 mock 数据；处理打包 Mock.XHR.prototype.\_\_send = Mock.XHR.prototype.send 报错
+:::
+
 # vite-plugin-mock
 
 **中文** | [English](./README.md)

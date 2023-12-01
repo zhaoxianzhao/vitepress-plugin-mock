@@ -1,3 +1,5 @@
+# forked from vbenjs/vite-plugin-mock [github](https://github.com/vbenjs/vite-plugin-mock)
+
 # vite-plugin-mock
 
 **English** | [中文](./README.zh_CN.md)

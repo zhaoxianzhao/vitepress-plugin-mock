@@ -1,3 +1,54 @@
+## 2.9.8 (2023-12-01)
+
+### Bug Fixes
+
+- can't update in real time, fix [#40](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/40) ([f25c6ac](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/f25c6ac8544991457368746bf6ec5fdfd8b4e083))
+- correct sourcemap ([2140987](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/21409876876b845b18b5b006e98292138870a922))
+- dev sourcemap ([5834b4f](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/5834b4f621b25371a7b0246a48fb83b9761afeed))
+- empty TS file in mock folder is error ([669b804](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/669b804df31f537bf6985b56972b32dd11e20504))
+- ensure that the post with parameters are matched,fix [#29](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/29) ([4cb55f8](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/4cb55f87def1e3edf07937ce48b0cfc594f2b88d))
+- ensure that the URLs of different request methods cannot match close [#6](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/6) ([efe943d](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/efe943d7564e2b35087aba8b8b12463785fb95fa))
+- error handle, fix [#39](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/39) ([874318c](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/874318ce399dc78c33d91161b73e3ced7bb6e9b6))
+- **eslint warn:** fix some warn ([b44c13b](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/b44c13b766cda0ee310071e9febeb48d73ef7bde))
+- fix js parsing error ([1dbee45](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/1dbee452ec7d90b07ac86ce8530430e864589ab5))
+- Fix local development post request proxy to https ([7965604](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/79656046377f501da796d1be9752522a2203d69b))
+- fix node version ([#38](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/38)) ([f91dea1](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/f91dea1be943aa1145727bfecd273ef45cdff8e9))
+- fix post proxy error ([d3ae41e](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/d3ae41e18a5e7adae504457165ba7b34b8ebff6f))
+- improve path matching logic, fix [#25](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/25) ([5079e4b](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/5079e4ba1c713aaba2facc87dfb289ea0916c231))
+- inappropriate type annotation ([#90](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/90)) ([a3fc4aa](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/a3fc4aab3dd1864f640918516c10d7d1530f5d90))
+- loss request headers in PROD mode ([#23](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/23)) ([76302df](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/76302df9cc5a23fe0ccd001787bffbb4c012cc83)), closes [#15](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/15)
+- make sure ignore matches the file correctly ([b612a09](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/b612a0934b7dcaae423450a56139cc9b9749c43e))
+- production xhr ([6c94783](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/6c94783f07b27c6ac58a4642c0e7eddf34b06f1f))
+- remove unnecessary and wrong usage of "try catch" ([815abde](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/815abde26f8f9a19322916ae01a9896a9aced33a))
+- support node12 ([fdfed60](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/fdfed60b6d8859bdcf8292c30859101f47d758b5))
+- typo, close [#42](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/42) ([5b4e946](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/5b4e9469060109a2a28c079eec8384fe654be68e))
+
+### Features
+
+- add examples ([2c5a86b](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/2c5a86bb75e39b6c7c9e08b1691c0541aeb104d9))
+- add logger option ([66a75ab](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/66a75ab0ee5a7c8e03987e74f15b50aedd1cc29f))
+- add rawResponse option to MockMethod ([#17](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/17)) ([24775f9](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/24775f9d7b14d024d90cd36c850a00634341927f)), closes [#16](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/16)
+- add request time ([ccbb14a](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/ccbb14ad623e6549781e5e902819f830a291f13f))
+- add supportTs options,Support es6 and commonjs modules in .js folder ([37f83f5](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/37f83f54c3a34e049f967b0db0ac2ade401cbf58))
+- **prod:** response 在 prod 模式下入参对象加上 url ([#83](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/83)) ([cd0b86f](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/cd0b86fce20228094cf18be14194498a2cbd490e))
+- remove supportTs, change to automatic judgment ([4625e59](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/4625e59429b4fc06ff4f911d681ee4999661c3ec))
+- response return headers, close [#10](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/10) ([eff3794](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/eff379400846bb33dc631d73f3526e66a135ac12))
+- response return url ([#27](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/27)) ([de9ed27](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/de9ed276b61c18cdfe0509df21921bc3ddf9d767))
+- **server:** add this for response, rawResponse function ([#43](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/43)) ([2f4d6d2](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/2f4d6d2984c7fe15236cb8b0d2ec5479930d5668))
+- support post restful close [#7](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/7) ([70b51e8](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/70b51e8738e41a7011e38e942dd2a136e450ae9f))
+- support restful api close [#4](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/4) ([236393e](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/236393ef551de32fbba62fbb27f678d4782568ec))
+- support sourcemap ([8c3cd9d](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/8c3cd9d78a9bd7f87dc7900e9bfe6c753ff3b11f))
+
+### Performance Improvements
+
+- imporve request log ([f9353fd](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/f9353fdf8149665f984729ab3c7a6749022cfdaf))
+- perf code ([98b9dbc](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/98b9dbc64f5c6da815a1f29c6b588fddd5189370))
+- Replace typescript plug-in with a faster esbuild plug-in ([58ad7cd](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/58ad7cd57e3fd0daa92e0fc59c00e09cf6ba45ad))
+
+### Reverts
+
+- revert 2.5.0, fix [#22](https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues/22) ([d5ac0d6](https://github.com/zhaoxianzhao/vitepress-plugin-mock/commit/d5ac0d68a67f4e4cc568ef1eff12f2ba425553e8))
+
 ## [3.0.0]
 
 ### Breaking Change
