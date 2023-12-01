@@ -1,6 +1,6 @@
 {
-  "name": "vite-plugin-mock",
-  "version": "3.0.0",
+  "name": "vitepress-plugin-mock",
+  "version": "0.0.1",
   "description": "A mock plugin for vite",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -40,13 +40,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anncwb/vite-plugin-mock",
+    "url": "https://github.com/zhaoxianzhao/vitepress-plugin-mock",
     "directory": "packages/vite-plugin-mock"
   },
   "bugs": {
-    "url": "https://github.com/anncwb/vite-plugin-mock/issues"
+    "url": "https://github.com/zhaoxianzhao/vitepress-plugin-mock/issues"
   },
-  "homepage": "https://github.com/anncwb/vite-plugin-mock/tree/master/#readme",
+  "homepage": "https://github.com/zhaoxianzhao/vitepress-plugin-mock",
   "dependencies": {
     "@types/mockjs": "^1.0.7",
     "bundle-require": "^4.0.1",

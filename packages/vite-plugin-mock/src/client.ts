@@ -1,9 +1,20 @@
 /* eslint-disable */
+const Mocks: any = {
+  XHR: function () {
+    this.prototype = {
+      __send: function () {},
+    }
+  },
+  mock: function () {},
+}
 import type { MockMethod } from './types'
 
 export async function createProdMockServer(mockList: any[]) {
-  const Mock: any = await import('mockjs')
+  let Mock: any = await import('mockjs')
   const { pathToRegexp } = await import('path-to-regexp')
+  if (!Mock.XHR) {
+    Mock = Mocks
+  }
   Mock.XHR.prototype.__send = Mock.XHR.prototype.send
   Mock.XHR.prototype.send = function () {
     if (this.custom.xhr) {
