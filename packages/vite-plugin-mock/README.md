@@ -27,52 +27,64 @@ pnpm add mockjs
 and
 
 ```bash
-yarn add vite-plugin-mock -D
+yarn add vitepress-plugin-mock -D
 # or
-npm i vite-plugin-mock -D
+npm i vitepress-plugin-mock -D
 # or
-pnpm add vite-plugin-mock -D
+pnpm add vitepress-plugin-mock -D
 ```
 
-### Example
+- /mock/index.ts
 
-**Run Example**
+```ts
+import Mock from 'mockjs'
+const { Random } = Mock
+interface ResponseTypes {
+  url: string
+  method: string
+  response: (_params: any) => void
+}
 
-```bash
-
-# ts example
-cd ./examples/ts-examples
-
-yarn install
-
-yarn serve
-
-# js example
-
-cd ./examples/js-examples
-
-yarn install
-
-yarn serve
+const tableData: Array<ResponseTypes> = [
+  {
+    url: '/test/table1',
+    method: 'get',
+    response: ({ query }) => {
+      return {
+        code: 200,
+        msg: 'success',
+        [`data|${query.limit || 10}`]: [
+          {
+            id: '@increment',
+            name: '@cname()',
+            age: Random.integer(18, 40),
+            address: '@city(true)',
+            sex: Random.integer(0, 2),
+            createTime: Random.date(),
+            type: Random.integer(0, 2),
+            status: Random.integer(0, 2),
+            'content|1': '<span>@ctitle(12)</span>',
+            tag: '@cword(2,4)',
+            remark: '@cword(10,30)',
+          },
+        ],
+        total: query.limit ? query.limit * 5 : 50,
+      }
+    },
+  },
+]
+export default mock
 ```
-
-## Usage
-
-**Development environment**
-
-The development environment is implemented using Connect middleware。
-
-Different from the production environment, you can view the network request record in the Google Chrome console
 
 - .vitepress\theme\index.ts
 
 ```ts
 import DefaultTheme from 'vitepress/theme'
-import { createProdMockServer } from 'vite-plugin-mock/client'
+import { createProdMockServer } from 'vitepress-plugin-mock/client'
 // mock文件
-import tableArray from './mock/index'
+import tableData from './mock/index'
 function setupProdMockServer() {
-  createProdMockServer([...tableArray])
+  createProdMockServer([...tableData])
 }
 
 export default {
@@ -83,150 +95,3 @@ export default {
   },
 }
 ```
-
-`/mock/index`
-
-```ts
-// test.ts
-
-import { MockMethod, MockConfig } from 'vite-plugin-mock'
-export default [
-  {
-    url: '/api/get',
-    method: 'get',
-    response: ({ query }) => {
-      return {
-        code: 0,
-        data: {
-          name: 'vben',
-        },
-      }
-    },
-  },
-  {
-    url: '/api/post',
-    method: 'post',
-    timeout: 2000,
-    response: {
-      code: 0,
-      data: {
-        name: 'vben',
-      },
-    },
-  },
-  {
-    url: '/api/text',
-    method: 'post',
-    rawResponse: async (req, res) => {
-      let reqbody = ''
-      await new Promise((resolve) => {
-        req.on('data', (chunk) => {
-          reqbody += chunk
-        })
-        req.on('end', () => resolve(undefined))
-      })
-      res.setHeader('Content-Type', 'text/plain')
-      res.statusCode = 200
-      res.end(`hello, ${reqbody}`)
-    },
-  },
-] as MockMethod[]
-
-export default function (config: MockConfig) {
-  return [
-    {
-      url: '/api/text',
-      method: 'post',
-      rawResponse: async (req, res) => {
-        let reqbody = ''
-        await new Promise((resolve) => {
-          req.on('data', (chunk) => {
-            reqbody += chunk
-          })
-          req.on('end', () => resolve(undefined))
-        })
-        res.setHeader('Content-Type', 'text/plain')
-        res.statusCode = 200
-        res.end(`hello, ${reqbody}`)
-      },
-    },
-  ]
-}
-```
-
-### MockMethod
-
-```ts
-{
-  // request url
-  url: string;
-  // request method
-  method?: MethodType;
-  // Request time in milliseconds
-  timeout?: number;
-  // default: 200
-  statusCode?:number;
-  // response data (JSON)
-  response?: ((opt: { [key: string]: string; body: Record<string,any>; query:  Record<string,any>, headers: Record<string, any>; }) => any) | any;
-  // response (non-JSON)
-  rawResponse?: (req: IncomingMessage, res: ServerResponse) => void;
-}
-
-```
-
-### Example (3.0.0 recommended)
-
-Create the `mockProdServer.ts` file
-
-```ts
-//  mockProdServer.ts
-
-import { createProdMockServer } from 'vite-plugin-mock/client'
-
-// Import your mock .ts files one by one
-// If you use vite.mock.config.ts, just import the file directly
-// You can use the import.meta.glob function to import all
-import testModule from '../mock/test'
-
-export function setupProdMockServer() {
-  createProdMockServer([...testModule])
-}
-```
-
-Config `vite-plugin-mock`
-
-```ts
-import { viteMockServe } from 'vite-plugin-mock'
-
-import { UserConfigExport, ConfigEnv } from 'vite'
-
-export default ({ command }: ConfigEnv): UserConfigExport => {
-  return {
-    plugins: [
-      viteMockServe({
-        mockPath: 'mock',
-        // According to the project configuration. Can be configured in the .env file
-        enable: true,
-      }),
-    ],
-  }
-}
-```
-
-## Sample project
-
-[Vben Admin](https://github.com/anncwb/vue-vben-admin)
-
-## Note
-
-- The node module cannot be used in the mock .ts file, otherwise the production environment will fail
-- Mock is used in the production environment, which is only suitable for some test environments. Do not open it in the formal environment to avoid unnecessary errors. At the same time, in the production environment, it may affect normal Ajax requests, such as file upload failure, etc.
-
-## License
-
-MIT
-
-[npm-img]: https://img.shields.io/npm/v/vite-plugin-mock.svg
-[npm-url]: https://npmjs.com/package/vite-plugin-mock
-[node-img]: https://img.shields.io/node/v/vite-plugin-mock.svg
-[node-url]: https://nodejs.org/en/about/releases/
